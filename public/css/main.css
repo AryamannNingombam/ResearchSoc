@@ -2004,7 +2004,7 @@ SERVICES
 #accordion a {
   display: block;
   padding: 10px 15px;
-  border-top: 1px solid #003B30;
+  border-top: 1px solid #003B30;fposi
   text-decoration: none;
 }
 #accordion .panel-heading a.collapsed:hover,
@@ -2053,13 +2053,13 @@ SERVICES
   font-family: 'FontAwesome';
   content: '\f106';
   float: right;
-  color: white;
+  color: #444;
   font-weight: lighter;
   transform: rotate(0deg);
   transition: all 0.2s ease-in;
 }
 #accordion .panel-heading .accordion-toggle.collapsed::before {
-  color: #444;
+  color: white;
   transform: rotate(180deg);
   transition: all 0.2s ease-in;
 }
