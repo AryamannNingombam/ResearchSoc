@@ -1,0 +1,64 @@
+<% layout('layouts/boilerplate')%>
+
+<main id="main">
+    <section class="breadcrumbs">
+        <div class="container">
+          <div class="d-flex justify-content-between align-items-center">
+            <h2>Events</h2>
+            <ol>
+              <li><a href="/">Home</a></li>
+              <li><a href="/events">Events</a></li>
+              <li><%= event.title %></li>
+            </ol>
+          </div>
+        </div>
+    </section>
+    <div class="blog-details spad">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8">
+            <div class="d-flex justify-content-center">
+              <img style="width: 75%;" src="<%=event.image%>" alt="" class="img-fluid"> 
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="event-details">
+              <div class="event-info">
+                <h3>Event information</h3> 
+                <ul>
+                  <%  if(event.isOver){ %>
+                    <li><strong>Held on <%= moment(event.onDate).format('LL') %></li>
+                  <% }else {%>  
+                  <li><strong>Date:</strong> <%= moment(event.onDate).format('LL') %></li>
+                  <li><strong>Time:</strong> <%= event.time %></li>
+                  <% if(event.applyLink){ %> 
+                    <li><strong>Register Link:</strong><a href="<%= event.applyLink %>"> Click Here</a></li>
+                  <% } %> 
+                  <li><strong>Location:</strong> <%= event.location %></li>
+                  <% } %>
+                  <% if(event.recordinglink){ %>
+                    <li><strong>Recording :</strong><a href="<%= event.recordinglink %>"> Click Here</a></li>
+                  <% } %>  
+                </ul>
+              </div>
+            </div>
+          </div>
+            <div class="blog__details__content">
+              <div class="blog__details__text">
+                <p><%= event.para1 %></p>
+                <p><%= event.para2 %></p>
+                <p><%= event.para3 %></p>
+              </div>
+              
+              <div class="blog__details__tags">
+                <% if(currentUser && currentUser.isAdmin){ %>
+                  <a href="/events/<%= event._id %>/edit">Edit</a>
+                <% } %> 	
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</main>

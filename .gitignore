@@ -1,0 +1,7 @@
+/data
+/node_modules
+/Moderna
+.env
+researchsociety.csr
+researchsociety.key
+www_researchsocietymit_com.crt

@@ -1,0 +1,66 @@
+<% layout('layouts/boilerplate')%>
+
+<main id="main">
+    <section class="breadcrumbs">
+        <div class="container">
+          <div class="d-flex justify-content-between align-items-center">
+            <h2>Events</h2>
+            <ol>
+              <li><a href="/">Home</a></li>
+              <li>Events</li>
+            </ol>
+          </div>
+        </div>
+    </section>
+
+    <section class="event spade">
+      <div class="container">
+        <div class="section-title">
+          <h2>OUR EVENTS</h2>
+        </div>
+        <% if(error && error.length > 0){ %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <%= error %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <%} else if(success && success.length > 0){ %>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <%= success %>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        <%} %>
+        <div class="row">
+          <div class="col-lg-12">
+            <ul id="event-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".Birds-of-Feather">Birds of a Feather</li>
+              <li data-filter=".Alumini-Webinar">Alumni Webinar</li>
+              <li data-filter=".Breakout">Breakout Sessions</li>
+              <li data-filter=".Paper-Discussion">Paper Discussion</li>
+              <li data-filter=".Collaboration">Collaborations</li>
+            </ul>
+          </div>
+        </div>
+        <div class="row event-container" data-aos="fade-up" data-aos-easing="ease-in-out" data-aos-duration="500">
+        <% events.forEach(function(event){ %>
+        <%  if((event.onDate) > Date.now()){ %>  
+          <div class="col-lg-4 col-md-6 <%= event.type %>">
+            <div class="event-item">
+              <a href="/events/<%= event._id %>"><img src="<%= event.image %>" class="img-fluid" alt=""></a>
+            </div>
+          </div>
+        <% } else if((event.onDate) < Date.now()){ event.isOver = true ;%>  
+          <div class="col-lg-4 col-md-6 <%= event.type %>">
+            <div class="event-item">
+              <a href="/events/<%= event._id %>"><img src="<%= event.image %>" class="img-fluid" alt=""></a>
+            </div>
+          </div>
+        <% }}) %>
+        </div>
+      </div>
+    </section>  
+</main>
