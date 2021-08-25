@@ -20,7 +20,7 @@ const indexRoutes = require("./routes/index");
 const eventRoutes = require("./routes/events");
 
 const url = process.env.DATABASE_URL || "mongodb://localhost/research"	
-mongoose.connect(url , {
+mongoose.connect("mongodb+srv://RSM:rsm2020@cluster0.0m51z.mongodb.net/Cluster0?retryWrites=true&w=majority" , {
 	useNewUrlParser: true,
 	useUnifiedTopology:true,
 	useFindAndModify:false,
