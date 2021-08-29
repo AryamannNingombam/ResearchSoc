@@ -550,6 +550,12 @@ SERVICES
   border-radius: 15px;
   min-height: 21.5rem;
 }
+
+.fact .fact-item-1 {
+  min-height:auto;
+  padding-bottom: 4rem;
+}
+
 .fact .fact-item:hover {
   border-color: rgba(0, 0, 0, .1);
   box-shadow: none;
